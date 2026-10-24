@@ -1,4 +1,14 @@
-const playButtons = document.querySelectorAll(".play-button[data-audio]");
+const playButton = document.querySelector(
+  '.play-button[data-audio="like-magic-audio"]'
+);
+
+const audio = document.getElementById("like-magic-audio");
+
+const songCard = playButton.closest(".song-card");
+const progressTrack = songCard.querySelector(".progress-track");
+const progressFill = songCard.querySelector(".progress-fill");
+const currentTimeDisplay = songCard.querySelector(".current-time");
+const durationDisplay = songCard.querySelector(".duration");
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) {
@@ -6,176 +16,100 @@ function formatTime(seconds) {
   }
 
   const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = Math.floor(seconds % 60);
+  const secs = Math.floor(seconds % 60);
 
-  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+  return `${minutes}:${secs.toString().padStart(2, "0")}`;
 }
 
-function resetPlayer(button, audio, resetAudio = true) {
-  button.textContent = "▶";
-  button.classList.remove("playing");
 
-  const songCard = button.closest(".song-card");
+// Show duration when audio information loads
+function showDuration() {
+  if (Number.isFinite(audio.duration)) {
+    durationDisplay.textContent = formatTime(audio.duration);
+  }
+}
 
-  if (songCard) {
+audio.addEventListener("loadedmetadata", showDuration);
+audio.addEventListener("durationchange", showDuration);
+
+if (audio.readyState >= 1) {
+  showDuration();
+}
+
+
+// PLAY / PAUSE
+playButton.addEventListener("click", async () => {
+
+  if (audio.paused) {
+
+    try {
+      await audio.play();
+
+      playButton.textContent = "❚❚";
+      playButton.classList.add("playing");
+      songCard.classList.add("playing");
+
+    } catch (error) {
+      console.error("Audio could not play:", error);
+    }
+
+  } else {
+
+    audio.pause();
+
+    playButton.textContent = "▶";
+    playButton.classList.remove("playing");
     songCard.classList.remove("playing");
+
   }
 
-  if (resetAudio) {
-    audio.currentTime = 0;
-  }
-}
-
-playButtons.forEach((button) => {
-  const audioId = button.dataset.audio;
-  const audio = document.getElementById(audioId);
-
-  if (!audio) return;
-
-  const songCard = button.closest(".song-card");
-
-  const progressTrack = songCard?.querySelector(
-    `[data-progress="${audioId}"]`
-  );
-
-  const progressFill = progressTrack?.querySelector(".progress-fill");
-  const currentTimeDisplay = songCard?.querySelector(".current-time");
-  const durationDisplay = songCard?.querySelector(".duration");
+});
 
 
-  // ==========================================
-  // LOAD SONG DURATION
-  // ==========================================
+// UPDATE TIMER AND PROGRESS BAR
+audio.addEventListener("timeupdate", () => {
 
-  audio.addEventListener("loadedmetadata", () => {
-    if (durationDisplay) {
-      durationDisplay.textContent = formatTime(audio.duration);
-    }
-  });
+  currentTimeDisplay.textContent =
+    formatTime(audio.currentTime);
 
+  if (Number.isFinite(audio.duration) && audio.duration > 0) {
 
-  // ==========================================
-  // PLAY / PAUSE
-  // ==========================================
-
-  button.addEventListener("click", () => {
-
-    if (audio.paused) {
-
-      // Stop every other song
-      playButtons.forEach((otherButton) => {
-        const otherAudioId = otherButton.dataset.audio;
-        const otherAudio = document.getElementById(otherAudioId);
-
-        if (otherAudio && otherAudio !== audio) {
-          otherAudio.pause();
-          resetPlayer(otherButton, otherAudio);
-
-          const otherCard = otherButton.closest(".song-card");
-          const otherFill = otherCard?.querySelector(".progress-fill");
-          const otherTime = otherCard?.querySelector(".current-time");
-
-          if (otherFill) {
-            otherFill.style.width = "0%";
-          }
-
-          if (otherTime) {
-            otherTime.textContent = "0:00";
-          }
-        }
-      });
-
-      audio.play();
-
-      button.textContent = "❚❚";
-      button.classList.add("playing");
-
-      if (songCard) {
-        songCard.classList.add("playing");
-      }
-
-    } else {
-
-      audio.pause();
-
-      button.textContent = "▶";
-      button.classList.remove("playing");
-
-      if (songCard) {
-        songCard.classList.remove("playing");
-      }
-
-    }
-
-  });
-
-
-  // ==========================================
-  // UPDATE PROGRESS + TIMER
-  // ==========================================
-
-  audio.addEventListener("timeupdate", () => {
-
-    if (!audio.duration) return;
-
-    const progress =
+    const percentage =
       (audio.currentTime / audio.duration) * 100;
 
-    if (progressFill) {
-      progressFill.style.width = `${progress}%`;
-    }
-
-    if (currentTimeDisplay) {
-      currentTimeDisplay.textContent =
-        formatTime(audio.currentTime);
-    }
-
-  });
-
-
-  // ==========================================
-  // CLICK PROGRESS BAR TO SEEK
-  // ==========================================
-
-  if (progressTrack) {
-
-    progressTrack.addEventListener("click", (event) => {
-
-      if (!audio.duration) return;
-
-      const rectangle =
-        progressTrack.getBoundingClientRect();
-
-      const clickPosition =
-        event.clientX - rectangle.left;
-
-      const percentage =
-        clickPosition / rectangle.width;
-
-      audio.currentTime =
-        percentage * audio.duration;
-
-    });
+    progressFill.style.width = `${percentage}%`;
 
   }
 
+});
 
-  // ==========================================
-  // SONG FINISHED
-  // ==========================================
 
-  audio.addEventListener("ended", () => {
+// CLICK PROGRESS BAR TO MOVE THROUGH SONG
+progressTrack.addEventListener("click", (event) => {
 
-    resetPlayer(button, audio);
+  if (!Number.isFinite(audio.duration)) {
+    return;
+  }
 
-    if (progressFill) {
-      progressFill.style.width = "0%";
-    }
+  const rect = progressTrack.getBoundingClientRect();
 
-    if (currentTimeDisplay) {
-      currentTimeDisplay.textContent = "0:00";
-    }
+  const position =
+    (event.clientX - rect.left) / rect.width;
 
-  });
+  audio.currentTime =
+    position * audio.duration;
+
+});
+
+
+// RESET WHEN SONG ENDS
+audio.addEventListener("ended", () => {
+
+  playButton.textContent = "▶";
+  playButton.classList.remove("playing");
+  songCard.classList.remove("playing");
+
+  progressFill.style.width = "0%";
+  currentTimeDisplay.textContent = "0:00";
 
 });
