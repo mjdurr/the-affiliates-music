@@ -340,40 +340,70 @@
 
 
         <!-- SONG 4 -->
-        <article class="song-card">
+<article class="song-card">
 
-          <div class="song-number">04</div>
+  <div class="song-number">04</div>
 
-          <div class="song-info">
-            <p class="song-genre">GOSPEL</p>
-            <h3>Totally Yours</h3>
+  <div class="song-info">
+    <p class="song-genre">Gospel</p>
 
-            <p class="song-description">
-              Contemporary gospel centered on acceptance,
-              purpose and knowing you are loved.
-            </p>
+    <h3>I Lift My Hands</h3>
 
-            <div class="song-meta">
-              <span>70 BPM</span>
-              <span>Group / Lead Vocal</span>
-            </div>
-          </div>
+    <p class="song-description">
+      An uplifting contemporary gospel record centered on faith,
+      surrender and finding strength through worship.
+    </p>
 
-          <div class="mini-wave">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
+    <div class="song-meta">
+      <span>100 BPM</span>
+      <span>Male Vocal</span>
+    </div>
+  </div>
 
-          <button class="play-button" aria-label="Play Totally Yours preview">
-            ▶
-          </button>
+  <div class="song-player">
 
-        </article>
+    <div class="mini-wave">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="progress-container">
+
+      <div
+        class="progress-track"
+        data-progress="i-lift-my-hands-audio"
+        role="slider"
+        aria-label="I Lift My Hands playback position"
+        tabindex="0">
+
+        <div class="progress-fill"></div>
 
       </div>
 
-    </section>
+      <div class="time-display">
+        <span class="current-time">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <audio
+    id="i-lift-my-hands-audio"
+    src="assets/audio/I_Lift_My_Hands-preview.mp3"
+    preload="metadata">
+  </audio>
+
+  <button
+    class="play-button"
+    data-audio="i-lift-my-hands-audio"
+    aria-label="Play I Lift My Hands preview">
+    ▶
+  </button>
+
+</article>
 
 
     <!-- =========================
