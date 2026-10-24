@@ -1464,6 +1464,65 @@ footer > p:nth-child(2) {
   margin-top: 26px;
   cursor: pointer;
 }
+/* ==========================================
+   THANK YOU PAGE
+========================================== */
+
+.thank-you-page {
+  min-height: 100vh;
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(216, 180, 95, 0.12),
+      transparent 35%
+    ),
+    var(--black);
+}
+
+.thank-you-content {
+  width: 100%;
+  max-width: 900px;
+}
+
+.thank-you-logo {
+  width: 280px;
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto 55px;
+}
+
+.thank-you-content h1 {
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.thank-you-content h1 span {
+  display: block;
+  margin-top: 12px;
+  color: var(--gold);
+}
+
+.thank-you-copy {
+  max-width: 590px;
+  margin: 35px auto 38px;
+
+  color: var(--gray);
+
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.thank-you-content .button {
+  margin-top: 5px;
+}
 
 @media (max-width: 600px) {
 .brand-logo {
