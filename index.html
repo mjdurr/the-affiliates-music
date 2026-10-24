@@ -836,10 +836,104 @@
           The Affiliates about writing for your next project.
         </p>
 
-        <a href="mailto:YOUR-EMAIL-HERE" class="button button-primary">
-          Song Inquiry
-        </a>
+        <form
+  class="inquiry-form"
+  action="https://formspree.io/f/mljjgrqg"
+  method="POST"
+>
 
+  <div class="form-grid">
+
+    <div class="form-field">
+      <label for="inquiry-name">Name *</label>
+      <input
+        type="text"
+        id="inquiry-name"
+        name="name"
+        placeholder="Your name"
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="inquiry-email">Email *</label>
+      <input
+        type="email"
+        id="inquiry-email"
+        name="email"
+        placeholder="Your email"
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="inquiry-company">Company / Organization</label>
+      <input
+        type="text"
+        id="inquiry-company"
+        name="company"
+        placeholder="Label, management, artist, etc."
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="inquiry-role">Role</label>
+      <input
+        type="text"
+        id="inquiry-role"
+        name="role"
+        placeholder="Artist, A&R, Manager, Producer..."
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="inquiry-song">Song</label>
+      <select id="inquiry-song" name="song">
+        <option value="">Select a song</option>
+        <option value="Like Magic">Like Magic</option>
+        <option value="Time With U">Time With U</option>
+        <option value="Kentucky Bluegrass">Kentucky Bluegrass</option>
+        <option value="I Lift My Hands">I Lift My Hands</option>
+        <option value="Main Character">Main Character</option>
+        <option value="She's Trouble (Wahala)">She's Trouble (Wahala)</option>
+        <option value="Don't Move">Don't Move</option>
+        <option value="Don't Hate Me">Don't Hate Me</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="inquiry-type">Inquiry Type *</label>
+      <select
+        id="inquiry-type"
+        name="inquiry_type"
+        required
+      >
+        <option value="">Select inquiry type</option>
+        <option value="Request Full Demo">Request Full Demo</option>
+        <option value="Song Availability / Licensing">Song Availability / Licensing</option>
+        <option value="Writing / Production">Writing / Production Inquiry</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="form-field form-message">
+    <label for="inquiry-message">Message *</label>
+    <textarea
+      id="inquiry-message"
+      name="message"
+      rows="6"
+      placeholder="Tell us about your project or inquiry..."
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" class="button button-primary">
+    Send Inquiry
+  </button>
+
+</form>
       </div>
 
     </section>
