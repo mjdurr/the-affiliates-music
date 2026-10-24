@@ -206,36 +206,70 @@
 
 
         <!-- SONG 2 -->
-        <article class="song-card">
+<article class="song-card">
 
-          <div class="song-number">02</div>
+  <div class="song-number">02</div>
 
-          <div class="song-info">
-            <p class="song-genre">R&amp;B</p>
-            <h3>Picture This</h3>
+  <div class="song-info">
+    <p class="song-genre">R&amp;B</p>
 
-            <p class="song-description">
-              Seductive contemporary R&amp;B built around
-              imagination, attraction and intimacy.
-            </p>
+    <h3>Time With U</h3>
 
-            <div class="song-meta">
-              <span>108 BPM</span>
-              <span>Male Vocal</span>
-            </div>
-          </div>
+    <p class="song-description">
+      A smooth contemporary R&amp;B record centered on connection,
+      intimacy and wanting more time with someone special.
+    </p>
 
-          <div class="mini-wave">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
+    <div class="song-meta">
+      <span>R&amp;B</span>
+      <span>Female Vocal</span>
+    </div>
+  </div>
 
-          <button class="play-button" aria-label="Play Picture This preview">
-            ▶
-          </button>
+  <div class="song-player">
 
-        </article>
+    <div class="mini-wave">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="progress-container">
+
+      <div
+        class="progress-track"
+        data-progress="time-with-u-audio"
+        role="slider"
+        aria-label="Time With U playback position"
+        tabindex="0">
+
+        <div class="progress-fill"></div>
+
+      </div>
+
+      <div class="time-display">
+        <span class="current-time">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <audio
+    id="time-with-u-audio"
+    src="assets/audio/Time_With_U-preview.mp3"
+    preload="metadata">
+  </audio>
+
+  <button
+    class="play-button"
+    data-audio="time-with-u-audio"
+    aria-label="Play Time With U preview">
+    ▶
+  </button>
+
+</article>
 
 
         <!-- SONG 3 -->
