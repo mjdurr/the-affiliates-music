@@ -932,7 +932,7 @@ h2 {
 }
 
 .writer-card {
-  min-height: 760px;
+  min-height: 0;
 
   position: relative;
 
@@ -962,7 +962,8 @@ h2 {
 }
 
 .writer-image {
-  height: 440px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   position: relative;
   overflow: hidden;
   background: #0d0d0d;
@@ -973,7 +974,7 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   transition: transform 0.5s ease;
 }
 
@@ -1366,8 +1367,5 @@ footer > p:nth-child(2) {
     gap: 4px;
   }
 
-  .writer-image {
-  height: 420px;
-}
 
 }
