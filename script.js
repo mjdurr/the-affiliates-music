@@ -223,3 +223,68 @@ filterButtons.forEach((filterButton) => {
   });
 
 });
+// ==========================================
+// SONG INQUIRY FORM
+// ==========================================
+
+const inquiryForm = document.querySelector(".inquiry-form");
+
+if (inquiryForm) {
+
+  inquiryForm.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+    const submitButton =
+      inquiryForm.querySelector('button[type="submit"]');
+
+    const originalButtonText =
+      submitButton.textContent;
+
+    submitButton.textContent = "Sending...";
+    submitButton.disabled = true;
+
+    const formData =
+      new FormData(inquiryForm);
+
+    try {
+
+      const response = await fetch(inquiryForm.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+
+        window.location.href = "thanks.html";
+
+      } else {
+
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+
+        alert(
+          "We couldn't send your inquiry. Please try again."
+        );
+
+      }
+
+    } catch (error) {
+
+      console.error("Inquiry submission error:", error);
+
+      submitButton.textContent = originalButtonText;
+      submitButton.disabled = false;
+
+      alert(
+        "We couldn't send your inquiry. Please try again."
+      );
+
+    }
+
+  });
+
+}
