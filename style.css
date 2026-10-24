@@ -831,7 +831,69 @@ h2 {
 .mini-wave span:nth-child(12) {
   height: 30%;
 }
+.song-player {
+  width: 100%;
+  min-width: 180px;
+}
 
+.progress-container {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 3px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--gold);
+  border-radius: 20px;
+  transition: width 0.1s linear;
+}
+
+.time-display {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  color: #77746e;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.song-card.playing {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(216, 180, 95, 0.1),
+      rgba(216, 180, 95, 0.015)
+    );
+
+  border-color: rgba(216, 180, 95, 0.4);
+}
+
+.song-card.playing .mini-wave span {
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(216, 180, 95, 0.22);
+}
+
+.song-card.playing .song-number {
+  color: var(--gold);
+}
+
+.play-button.playing {
+  color: var(--black);
+  background: var(--gold);
+}
 .play-button {
   width: 54px;
   height: 54px;
