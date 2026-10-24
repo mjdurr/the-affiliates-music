@@ -273,36 +273,70 @@
 
 
         <!-- SONG 3 -->
-        <article class="song-card">
+<article class="song-card">
 
-          <div class="song-number">03</div>
+  <div class="song-number">03</div>
 
-          <div class="song-info">
-            <p class="song-genre">R&amp;B</p>
-            <h3>Any Day</h3>
+  <div class="song-info">
+    <p class="song-genre">Country</p>
 
-            <p class="song-description">
-              A smooth R&amp;B record about being ready
-              to show up for someone anytime, anywhere.
-            </p>
+    <h3>Kentucky Bluegrass</h3>
 
-            <div class="song-meta">
-              <span>85 BPM</span>
-              <span>Female Vocal</span>
-            </div>
-          </div>
+    <p class="song-description">
+      A high-energy country record rooted in Southern storytelling,
+      bluegrass spirit and a driving, feel-good sound.
+    </p>
 
-          <div class="mini-wave">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
+    <div class="song-meta">
+      <span>151 BPM</span>
+      <span>Male Vocal</span>
+    </div>
+  </div>
 
-          <button class="play-button" aria-label="Play Any Day preview">
-            ▶
-          </button>
+  <div class="song-player">
 
-        </article>
+    <div class="mini-wave">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="progress-container">
+
+      <div
+        class="progress-track"
+        data-progress="kentucky-bluegrass-audio"
+        role="slider"
+        aria-label="Kentucky Bluegrass playback position"
+        tabindex="0">
+
+        <div class="progress-fill"></div>
+
+      </div>
+
+      <div class="time-display">
+        <span class="current-time">0:00</span>
+        <span class="duration">0:00</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <audio
+    id="kentucky-bluegrass-audio"
+    src="assets/audio/Kentucky_Bluegrass-preview.mp3"
+    preload="metadata">
+  </audio>
+
+  <button
+    class="play-button"
+    data-audio="kentucky-bluegrass-audio"
+    aria-label="Play Kentucky Bluegrass preview">
+    ▶
+  </button>
+
+</article>
 
 
         <!-- SONG 4 -->
