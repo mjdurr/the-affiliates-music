@@ -172,3 +172,54 @@ playButtons.forEach((playButton) => {
   });
 
 });
+// ==========================================
+// MUSIC GENRE FILTERS
+// ==========================================
+
+const filterButtons = document.querySelectorAll(".filter[data-filter]");
+const songCards = document.querySelectorAll(".song-card");
+
+filterButtons.forEach((filterButton) => {
+
+  filterButton.addEventListener("click", () => {
+
+    const selectedGenre =
+      filterButton.dataset.filter.toLowerCase();
+
+    // Update active filter button
+    filterButtons.forEach((button) => {
+      button.classList.remove("active");
+    });
+
+    filterButton.classList.add("active");
+
+
+    // Show / hide songs
+    songCards.forEach((songCard) => {
+
+      const genreElement =
+        songCard.querySelector(".song-genre");
+
+      if (!genreElement) return;
+
+      const songGenre =
+        genreElement.textContent.trim().toLowerCase();
+
+      if (
+        selectedGenre === "all" ||
+        songGenre === selectedGenre
+      ) {
+
+        songCard.style.display = "";
+
+      } else {
+
+        songCard.style.display = "none";
+
+      }
+
+    });
+
+  });
+
+});
