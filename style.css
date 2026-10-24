@@ -932,7 +932,7 @@ h2 {
 }
 
 .writer-card {
-  min-height: 500px;
+  min-height: 620px;
 
   position: relative;
 
@@ -1007,18 +1007,48 @@ h2 {
   text-transform: uppercase;
 }
 
-.writer-content > p:last-child {
-  max-width: 520px;
-
-  margin-top: 16px;
-
-  color: var(--gray);
-
-  font-size: 0.88rem;
-
-  line-height: 1.75;
+.writer-genres {
+  margin-top: 10px;
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.7;
 }
 
+.writer-bio {
+  max-width: 540px;
+  margin-top: 22px;
+  color: var(--gray);
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.writer-credits {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(216, 180, 95, 0.18);
+}
+
+.writer-credits span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.writer-credits p {
+  color: #d0cdc5;
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.collaboration-credits {
+  margin-top: 18px;
+  padding-top: 18px;
+}
 
 /* =========================================================
    CONTACT
