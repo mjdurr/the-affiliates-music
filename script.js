@@ -288,3 +288,43 @@ if (inquiryForm) {
   });
 
 }
+// ==========================================
+// REQUEST FULL DEMO
+// ==========================================
+
+const demoRequestButtons =
+  document.querySelectorAll(".demo-request");
+
+demoRequestButtons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    const songTitle = button.dataset.song;
+
+    const songSelect =
+      document.getElementById("inquiry-song");
+
+    const inquiryType =
+      document.getElementById("inquiry-type");
+
+    const contactSection =
+      document.getElementById("contact");
+
+    if (songSelect) {
+      songSelect.value = songTitle;
+    }
+
+    if (inquiryType) {
+      inquiryType.value = "Request Full Demo";
+    }
+
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+  });
+
+});
