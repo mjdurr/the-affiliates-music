@@ -1464,6 +1464,15 @@ footer > p:nth-child(2) {
   margin-top: 26px;
   cursor: pointer;
 }
+.inquiry-note {
+  max-width: 620px;
+  margin: 24px auto 0;
+  color: #77746e;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
 /* ==========================================
    THANK YOU PAGE
 ========================================== */
