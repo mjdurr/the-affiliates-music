@@ -173,56 +173,68 @@ playButtons.forEach((playButton) => {
 
 });
 // ==========================================
-// MUSIC GENRE FILTERS
+// MUSIC CATALOG FILTERS
 // ==========================================
 
 const filterButtons = document.querySelectorAll(".filter[data-filter]");
 const songCards = document.querySelectorAll(".song-card");
 
+function filterSongs(selectedFilter) {
+
+  songCards.forEach((songCard) => {
+
+    const genreElement =
+      songCard.querySelector(".song-genre");
+
+    if (!genreElement) return;
+
+    const songGenre =
+      genreElement.textContent.trim().toLowerCase();
+
+    const isFeatured =
+      songCard.dataset.featured === "true";
+
+    if (selectedFilter === "featured") {
+
+      songCard.style.display =
+        isFeatured ? "" : "none";
+
+    } else if (selectedFilter === "all") {
+
+      songCard.style.display = "";
+
+    } else {
+
+      songCard.style.display =
+        songGenre === selectedFilter ? "" : "none";
+
+    }
+
+  });
+
+}
+
 filterButtons.forEach((filterButton) => {
 
   filterButton.addEventListener("click", () => {
 
-    const selectedGenre =
+    const selectedFilter =
       filterButton.dataset.filter.toLowerCase();
 
-    // Update active filter button
     filterButtons.forEach((button) => {
       button.classList.remove("active");
     });
 
     filterButton.classList.add("active");
 
-
-    // Show / hide songs
-    songCards.forEach((songCard) => {
-
-      const genreElement =
-        songCard.querySelector(".song-genre");
-
-      if (!genreElement) return;
-
-      const songGenre =
-        genreElement.textContent.trim().toLowerCase();
-
-      if (
-        selectedGenre === "all" ||
-        songGenre === selectedGenre
-      ) {
-
-        songCard.style.display = "";
-
-      } else {
-
-        songCard.style.display = "none";
-
-      }
-
-    });
+    filterSongs(selectedFilter);
 
   });
 
 });
+
+// Show Featured songs when the site first loads
+filterSongs("featured");
 // ==========================================
 // SONG INQUIRY FORM
 // ==========================================
